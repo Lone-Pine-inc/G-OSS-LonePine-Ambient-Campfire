@@ -14,7 +14,7 @@
 ## Установка
 
 1. Скопируйте папку с аддоном в `garrysmod/addons/`.
-2. Поместите звуковые файлы `fire1.wav`, `fire2.wav`, `fire3.wav` в
+2. Поместите звуковые файлы `fire1.mp3`, `fire2.mp3`, `fire3.mp3` в
    `sound/lonepine_campfire/` внутри аддона.
 3. Запустите игру и найдите сущность **LonePine Campfire** во вкладке `Entities > Server`.
 

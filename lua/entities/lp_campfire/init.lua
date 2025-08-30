@@ -6,9 +6,9 @@ include("shared.lua")
 util.AddNetworkString("lp_campfire_open")
 util.AddNetworkString("lp_campfire_update")
 
-resource.AddSingleFile("sound/lonepine_campfire/fire1.wav")
-resource.AddSingleFile("sound/lonepine_campfire/fire2.wav")
-resource.AddSingleFile("sound/lonepine_campfire/fire3.wav")
+resource.AddSingleFile("sound/lonepine_campfire/fire1.mp3")
+resource.AddSingleFile("sound/lonepine_campfire/fire2.mp3")
+resource.AddSingleFile("sound/lonepine_campfire/fire3.mp3")
 
 function ENT:Initialize()
     self:SetModel("models/props_unique/firepit_campground.mdl")
