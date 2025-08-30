@@ -10,7 +10,7 @@ function ENT:Think()
         if not self.FireSound or self.CurrentSound ~= self:GetSoundName() then
             if self.FireSound then self.FireSound:Stop() end
             self.CurrentSound = self:GetSoundName()
-            self.FireSound = CreateSound(self, SOUND_PATH .. self.CurrentSound .. ".wav")
+            self.FireSound = CreateSound(self, SOUND_PATH .. self.CurrentSound .. ".mp3")
             self.FireSound:PlayEx(0, 100)
         end
         if self.FireSound then
