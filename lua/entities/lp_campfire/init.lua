@@ -16,7 +16,7 @@ function ENT:Initialize()
     if IsValid(phys) then phys:Wake() end
 
     self:SetFireEnabled(false)
-    self:SetIntensity(1)
+    self:SetIntensity(0.5)
     self:SetSoundName("fire1")
 
     self.UsePlayers = {}
@@ -62,7 +62,7 @@ function ENT:StartFire()
     local fire = ents.Create("env_fire")
     if not IsValid(fire) then return end
     fire:SetPos(self:GetPos() + Vector(0,0,10))
-    fire:SetKeyValue("firesize", tostring(math.Clamp(64 * self:GetIntensity(), 32, 128)))
+    fire:SetKeyValue("firesize", tostring(math.Clamp(64 * self:GetIntensity(), 0, 128)))
     fire:SetKeyValue("fireattack", "4")
     fire:SetKeyValue("health", "10")
     fire:SetKeyValue("damagescale", "0")
