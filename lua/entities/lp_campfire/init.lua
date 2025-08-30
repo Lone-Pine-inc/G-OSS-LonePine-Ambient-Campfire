@@ -6,11 +6,16 @@ include("shared.lua")
 util.AddNetworkString("lp_campfire_open")
 util.AddNetworkString("lp_campfire_update")
 
+resource.AddSingleFile("sound/lonepine_campfire/fire1.wav")
+resource.AddSingleFile("sound/lonepine_campfire/fire2.wav")
+resource.AddSingleFile("sound/lonepine_campfire/fire3.wav")
+
 function ENT:Initialize()
     self:SetModel("models/props_unique/firepit_campground.mdl")
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetMoveType(MOVETYPE_VPHYSICS)
     self:SetSolid(SOLID_VPHYSICS)
+    self:SetUseType(ONOFF_USE)
 
     local phys = self:GetPhysicsObject()
     if IsValid(phys) then phys:Wake() end
@@ -19,32 +24,25 @@ function ENT:Initialize()
     self:SetIntensity(0.5)
     self:SetSoundName("fire1")
 
-    self.UsePlayers = {}
+    self.UseStart = {}
 end
 
-function ENT:Use(activator)
+function ENT:Use(activator, caller, useType)
     if not activator:IsPlayer() then return end
-    self.UsePlayers[activator] = self.UsePlayers[activator] or CurTime()
-end
 
-function ENT:Think()
-    for ply, start in pairs(self.UsePlayers) do
-        if not IsValid(ply) then
-            self.UsePlayers[ply] = nil
-        elseif ply:KeyDown(IN_USE) then
-            if CurTime() - start >= 3 then
-                net.Start("lp_campfire_open")
-                net.WriteEntity(self)
-                net.Send(ply)
-                self.UsePlayers[ply] = nil
-            end
+    if useType == USE_ON then
+        self.UseStart[activator] = CurTime()
+    elseif useType == USE_OFF then
+        local start = self.UseStart[activator]
+        self.UseStart[activator] = nil
+        if start and CurTime() - start >= 3 then
+            net.Start("lp_campfire_open")
+            net.WriteEntity(self)
+            net.Send(activator)
         else
-            self.UsePlayers[ply] = nil
             self:ToggleFire()
         end
     end
-    self:NextThink(CurTime())
-    return true
 end
 
 function ENT:ToggleFire()
