@@ -18,11 +18,7 @@ function ENT:Think()
             local dist = ply:GetPos():Distance(self:GetPos())
             local maxDist = 600
             local vol = math.Clamp(1 - dist / maxDist, 0, 1) * self:GetIntensity()
-            if vol <= 0 then
-                self.FireSound:Stop()
-            else
-                self.FireSound:ChangeVolume(vol, 0)
-            end
+            self.FireSound:ChangeVolume(vol, 0)
         end
         local dlight = DynamicLight(self:EntIndex())
         if dlight then
