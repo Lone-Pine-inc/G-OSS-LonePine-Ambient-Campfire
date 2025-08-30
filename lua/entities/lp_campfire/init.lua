@@ -24,7 +24,7 @@ end
 
 function ENT:Use(activator)
     if not activator:IsPlayer() then return end
-    self.UsePlayers[activator] = CurTime()
+    self.UsePlayers[activator] = self.UsePlayers[activator] or CurTime()
 end
 
 function ENT:Think()
