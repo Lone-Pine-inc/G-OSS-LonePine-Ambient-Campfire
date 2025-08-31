@@ -1,7 +1,5 @@
 # LonePine Ambient Campfire
 
-Аддон добавляет спаунящуюся сущность костра для Garry's Mod.
-
 ![fire](https://github.com/user-attachments/assets/bcd8665b-4d18-4dcf-81e8-f3e8fb5efd28)
 
 
