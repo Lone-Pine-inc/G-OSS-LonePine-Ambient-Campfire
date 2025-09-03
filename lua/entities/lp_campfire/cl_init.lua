@@ -41,8 +41,9 @@ function ENT:Think()
             dlight.g = 140 + 10 * flicker
             dlight.b = 40 + 5 * flicker
             dlight.brightness = baseBrightness * flicker
-            dlight.Size = baseSize * (0.95 + 0.1 * math.sin(t * 0.7))
-            dlight.Decay = dlight.Size * 5
+            local computedSize = baseSize * (0.95 + 0.1 * math.sin(t * 0.7))
+            dlight.Size = computedSize
+            dlight.Decay = computedSize * 5
             dlight.DieTime = CurTime() + 0.5
         end
     else
