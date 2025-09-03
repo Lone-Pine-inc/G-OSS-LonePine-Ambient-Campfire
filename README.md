@@ -1,30 +1,25 @@
-# LonePine Ambient Campfire
+## Features
 
-![fire](https://github.com/user-attachments/assets/bcd8665b-4d18-4dcf-81e8-f3e8fb5efd28)
+- Model: `models/props_unique/firepit_campground.mdl`.
+- Press **E** to toggle the fire on/off.
+- Hold **E** for 3 seconds to open the settings menu.
+  - Adjust flame intensity.
+  - Choose one of three campfire sounds (`fire1`, `fire2`, `fire3`).
+- The fire sound fades and stops when the player is far from the campfire.
 
+## Installation
 
-## Возможности
+1. Copy the addon folder into `garrysmod/addons/`.
+2. Place the sound files `fire1.mp3`, `fire2.mp3`, `fire3.mp3` into  
+   `sound/lonepine_campfire/` inside the addon.
+3. Launch the game and find the **LonePine Campfire** entity under `Entities > Server`.
 
-- Модель: `models/props_unique/firepit_campground.mdl`.
-- Нажмите **E** для включения/выключения огня.
-- Удерживайте **E** на протяжении 3 секунд, чтобы открыть меню настроек.
-  - Настройка интенсивности пламени.
-  - Выбор одного из трёх звуков костра (`fire1`, `fire2`, `fire3`).
-- Звук огня затухает и отключается, когда игрок находится далеко от костра.
+## Usage
 
-## Установка
+- Quick press **E** toggles the fire.
+- Hold **E** (3 seconds) to open the settings menu.
+- In the menu you can adjust flame intensity and select the sound.
 
-1. Скопируйте папку с аддоном в `garrysmod/addons/`.
-2. Поместите звуковые файлы `fire1.mp3`, `fire2.mp3`, `fire3.mp3` в
-   `sound/lonepine_campfire/` внутри аддона.
-3. Запустите игру и найдите сущность **LonePine Campfire** во вкладке `Entities > Server`.
+## License
 
-## Использование
-
-- Быстрое нажатие **E** переключает огонь.
-- Удержание **E** (3 секунды) открывает меню настроек.
-- В меню можно менять интенсивность пламени и звук.
-
-## Лицензия
-
-Свободно для использования и модификации. Позднее будет опубликован в Workshop.
+Free to use and modify. Will be published on Workshop later.
