@@ -14,6 +14,10 @@ function ENT:Think()
             self.FireSound:PlayEx(0, 100)
         end
         if self.FireSound then
+            -- Ensure continuous playback even if the source file doesn't loop
+            if not self.FireSound:IsPlaying() then
+                self.FireSound:PlayEx(0, 100)
+            end
             local ply = LocalPlayer()
             local dist = ply:GetPos():Distance(self:GetPos())
             local maxDist = 600
@@ -22,14 +26,24 @@ function ENT:Think()
         end
         local dlight = DynamicLight(self:EntIndex())
         if dlight then
+            local intensity = self:GetIntensity()
+            -- Subtle, non-uniform flicker
+            local t = CurTime() * 12 + self:EntIndex()
+            local flicker = 0.9 + 0.1 * math.sin(t) + 0.05 * math.sin(t * 0.37) + math.Rand(-0.02, 0.02)
+            flicker = math.Clamp(flicker, 0.8, 1.2)
+
+            -- Tamed brightness/size mapping so Intensity=1 isn't overblown
+            local baseBrightness = 0.9 + intensity * 0.5 -- ~1.4 at 1.0
+            local baseSize = 80 + intensity * 60         -- ~140 at 1.0
+
             dlight.pos = self:GetPos() + Vector(0,0,20)
             dlight.r = 255
-            dlight.g = 150
-            dlight.b = 50
-            dlight.brightness = 3 * self:GetIntensity()
-            dlight.Decay = 1000
-            dlight.Size = 200 * self:GetIntensity()
-            dlight.DieTime = CurTime() + 1
+            dlight.g = 140 + 10 * flicker
+            dlight.b = 40 + 5 * flicker
+            dlight.brightness = baseBrightness * flicker
+            dlight.Size = baseSize * (0.95 + 0.1 * math.sin(t * 0.7))
+            dlight.Decay = dlight.Size * 5
+            dlight.DieTime = CurTime() + 0.5
         end
     else
         if self.FireSound then
