@@ -26,4 +26,4 @@
 
 ## License
 
-Free to use and modify. Will be published on Workshop later.
+Free to use and modify. Will be published on Workshop.
